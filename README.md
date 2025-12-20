@@ -207,7 +207,7 @@ This chart displays how much each person would owe if the national debt were eve
 ## Summary
 This project demonstrates how to scrape live data from a website, clean and convert text into numeric formats, and produce interactive visualizations in Python. Using rank labels makes it clear which countries have the highest national debt in absolute terms, relative to GDP, and per capita.
 
-*(simply view the jupyter notebook file above for , enjoy!)*
+*(simply view the jupyter notebook file above, enjoy!)*
 
 ### National Debt Chart
 <img width="1610" height="5340" alt="newplot" src="https://github.com/user-attachments/assets/a2176285-05ee-447f-b40a-ae46a4523f1e" />
