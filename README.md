@@ -1,6 +1,6 @@
 # Countries with the Highest National Debt
 
-This project fetches the latest data on national debt from the *World Population Review* website and visualizes it using interactive plots. It shows the total debt, debt as a percentage of GDP, and debt per capita for each country.  It highlights `user-selected countries` for comparison, prints `comparison table`, generates `narrative analysis`, and provides `interactive bar charts`, and `choropleth maps` for a comprehensive understanding of debt profiles across 190 countries. 
+This project fetches the latest data on national debt from the *World Population Review* website and visualizes it using interactive plots. It shows the total debt, debt as a percentage of GDP, and debt per capita for each country.  It highlights `user-selected countries` for comparison, prints `comparison table`, generates `narrative analysis`, and provides `interactive bar charts`, and `choropleth maps` for a comprehensive understanding of debt profiles across all countries. 
 
 *(as for suggestion, quickly scan this md file down until the very end. To fully grasp what this project is all about)*
 
