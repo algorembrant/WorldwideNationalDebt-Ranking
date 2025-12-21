@@ -92,10 +92,11 @@ records.append({
     "Debt Per Capita": per_capita
 })
 ```
+
 The list `records` is converted into a pandas DataFrame, which serves as the main data structure for further analysis.
+
 ```python
 df = pd.DataFrame(records)
-
 ```
 
 ## Helper Functions
@@ -132,7 +133,9 @@ def create_rank_labels(df, value_col, value_format="raw"):
     df_sorted["Plot Label"] = df_sorted.apply(lambda x: f"rank {x['Rank']}, {format_value(x)}", axis=1)
     return df_sorted.sort_values(value_col)
 ```
+
 The functions `build_bar_colors` and `build_text_colors` generate lists of colors for bars and text labels in plots, respectively. They highlight the user-selected countries with the specified colors and default to blue or black for other countries. Matching is exact, so any mismatch in country names will result in default coloring.
+
 ```python
 def build_bar_colors(df, country_col="Country", user_country=None, user_color=None,
                      extra_country=None, extra_color=None):
@@ -158,6 +161,7 @@ def build_text_colors(df, country_col="Country", user_country=None, user_color=N
             colors.append("black")
     return colors
 ```
+
 The function `format_value_units` ensures that numeric values are displayed with appropriate units and formatting for readability in tables and charts. It handles percentages, debt in USD, and per capita debt, converting large numbers to trillions or billions and adding the `$` symbol.
 
 ```python
@@ -175,16 +179,14 @@ def format_value_units(val, metric):
             return f"${val:,}"
     return val
 ```
+
 The function `get_rank` retrieves the rank of a specific country in a sorted DataFrame. It returns `None` if the country does not exist in the dataset.
+
 ```python
 def get_rank(df_sorted, country):
     row = df_sorted[df_sorted["Country"]==country]
     return int(row["Rank"].iloc[0]) if not row.empty else None
 ```
-
-## Plotting Bar Charts, Creating Summary
-
-This section of the code handles generating bar charts, building a summary DataFrame, creating a readable narrative, and visualizing data on choropleth maps. It is the central part of the visualization process.
 
 ### Bar Charts
 
@@ -195,7 +197,9 @@ df1_plot = create_rank_labels(df, "Debt USD", "debt")
 df2_plot = create_rank_labels(df.dropna(subset=["Debt % GDP"]), "Debt % GDP", "pct")
 df3_plot = create_rank_labels(df.dropna(subset=["Debt Per Capita"]), "Debt Per Capita", "percap")
 ```
+
 The three DataFrames are stored with titles and value column names in the `bar_charts` list. This allows the code to loop through each chart type and generate horizontal bar charts using Plotly.
+
 ```python
 bar_charts = [
     ("National Debt by Country", "Debt USD", df1_plot),
@@ -203,6 +207,7 @@ bar_charts = [
     ("Debt Per Capita by Country", "Debt Per Capita", df3_plot)
 ]
 ```
+
 For each chart, `go.Figure(go.Bar(...))` is used to create a horizontal bar chart. The x-axis is the metric value, the y-axis is the country name, and the text labels are derived from the `Plot Label` column created by `create_rank_labels`. Custom colors are applied using `build_bar_colors` for the bars and `build_text_colors` for the text, highlighting the user-selected countries. The chart height is dynamically adjusted based on the number of countries to ensure readability.
 
 ```python
@@ -231,6 +236,7 @@ for title, val_col, plot_df in bar_charts:
     )
     fig.show()
 ```
+
 ## Summary DataFrame
 
 A summary DataFrame is created to consolidate the metrics and ranks for the two highlighted countries. The code extracts the metric values and ranks for `USER_COUNTRY` and `HIGHLIGHT_COUNTRY` from the previously prepared DataFrames. The `get_rank` function retrieves the rank for each metric.
@@ -246,6 +252,7 @@ summary_df["Ratio (other/main)"] = ratio_other_main
 for col in [USER_COUNTRY, HIGHLIGHT_COUNTRY, "Difference"]:
     summary_df[col] = [format_value_units(val, metric) for val, metric in zip(summary_df[col], summary_df["Metric"])]
 ```
+
 A colored table is created using `go.Table` to display the metrics, differences, and ranks, with the user-selected countries highlighted in their respective colors.
 
 ```python
@@ -258,8 +265,6 @@ fig_table.show()
 ```
 
 ## Narrative with Explanation
-
-This section defines a function `narrative_with_explanation` that generates a readable text summary comparing the two selected countries. Its purpose is to provide context and interpretation of the numerical data and visualizations, making it easier for a user to understand the differences between countries without manually analyzing charts or tables.
 
 The function accepts three parameters: `df`, which is the summary DataFrame containing metrics and ranks; `main_country`, which is the primary country of interest; and `compare_country`, which is the secondary country for comparison. An empty list `statements` is initialized to collect the narrative strings.
 
@@ -292,6 +297,7 @@ for country in [main_country, compare_country]:
     statements.append(f"{country} has a national debt of {debt} (Rank {rank_debt}), "
                       f"which is {pct_gdp}% of its GDP (Rank {rank_gdp}), and a per capita debt of {per_capita} (Rank {rank_pc}).\n")
 ```
+
 Next, the function performs comparative analysis for each metric. It extracts the metric values and the ratios (`Ratio (main/other)` and `Ratio (other/main)`) for both countries. Using these, it constructs sentences comparing the main country to the secondary country, including both the actual values and how many times one is larger than the other. This provides a clear, quantitative comparison.
 
 ```python
@@ -307,6 +313,7 @@ for metric in df['Metric']:
         f"On the other hand, {compare_country} is {ratio_inverse}× bigger than {main_country}.\n"
     )
 ```
+
 Finally, the function joins all narrative statements into a single string separated by newlines and returns it. This string is printed to the console for the user.
 
 ```python
@@ -314,13 +321,10 @@ return "\n".join(statements)
 
 print(narrative_with_explanation(summary_df, USER_COUNTRY, HIGHLIGHT_COUNTRY))
 ```
+
 This approach ensures that all numerical insights from the summary DataFrame are translated into readable text, making the data accessible and interpretable. It is particularly useful for creating reports, dashboards, or presentations without requiring the viewer to manually read charts or tables.
 
-## Geo Maps
-
-This section generates interactive choropleth maps to visualize national debt metrics for all countries, highlighting the user-selected countries. The maps allow viewers to quickly identify geographic patterns and compare individual countries.
-
-### Data Preparation
+### Geo Maps Data Preparation
 
 First, a copy of the main DataFrame `df` is created and three new columns are added to store values for each map: `Debt USD Map`, `Debt % GDP Map`, and `Debt Per Capita Map`. This separation ensures that each metric can be independently visualized without modifying the original DataFrame.
 
@@ -348,7 +352,8 @@ def add_country_markers(fig, main_country, highlight_country):
                 textfont=dict(color=color, size=16),
             )
 ```
-### National Debt (USD) Map
+
+## National Debt (USD) Map
 
 A choropleth map is created for total national debt using Plotly Express. The `locations` column specifies the country names, and `color` is mapped to `Debt USD Map`. Hover information includes all three metrics to provide additional context when a user inspects a country. The color scale `OrRd` represents increasing debt levels with progressively darker shades of orange and red. The map height and margins are adjusted to ensure readability.
 
@@ -389,7 +394,6 @@ fig_map_gdp = px.choropleth(
 add_country_markers(fig_map_gdp, USER_COUNTRY, HIGHLIGHT_COUNTRY)
 fig_map_gdp.update_layout(height=800, margin=dict(l=20, r=20, t=60, b=20))
 fig_map_gdp.show()
-
 ```
 
 ## Debt Per Capita Map
@@ -411,8 +415,6 @@ fig_map_pc = px.choropleth(
 add_country_markers(fig_map_pc, USER_COUNTRY, HIGHLIGHT_COUNTRY)
 fig_map_pc.update_layout(height=800, margin=dict(l=20, r=20, t=60, b=20))
 fig_map_pc.show()
-
-
 ```
 
 ## Important Notes
