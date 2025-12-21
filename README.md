@@ -557,3 +557,5 @@ Calling `fig.show()` renders the complete table interactively and enables export
 ## What does it look like?
 <img width="1610" height="3830" alt="newplot (6)" src="https://github.com/user-attachments/assets/734a7270-3140-47c6-989f-790f55e13981" />
 
+---
+As for simplicity, simply visit the *[Jupyter Notebook](https://github.com/algorembrant/WorldwideNationalDebt-Ranking/blob/main/Worldwide%20Debt%20Profiles.ipynb).* You may download, copy, fork, or do anything you want with it.
