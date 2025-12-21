@@ -550,3 +550,8 @@ The layout configuration applies the previously calculated height to the figure,
 fig.show()
 ```
 Calling `fig.show()` renders the complete table interactively and enables exporting the entire table as a single image without truncation.
+
+---
+## What does it look like?
+<img width="1610" height="3830" alt="newplot (6)" src="https://github.com/user-attachments/assets/734a7270-3140-47c6-989f-790f55e13981" />
+
