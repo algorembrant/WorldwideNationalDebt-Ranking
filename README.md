@@ -4,7 +4,7 @@ This project fetches the latest data on national debt from the *World Population
 
 This project is not related to what I mainly do, but it can economically inform the user about the current state of the debt profile of his/her country in comparison to all countries.
 
-*(as for suggestion, quickly scan this md file down until the very end. To fully grasp what this project is all about)*
+*(as for suggestion, quickly scan this md file down until the very end. To have a full-brief grasp what this project is all about)*
 
 ---
 ## Required Libraries
