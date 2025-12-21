@@ -547,3 +547,6 @@ The layout configuration applies the previously calculated height to the figure,
 
 ## Displaying the Table
 ```python
+fig.show()
+```
+Calling `fig.show()` renders the complete table interactively and enables exporting the entire table as a single image without truncation.
