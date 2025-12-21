@@ -425,7 +425,7 @@ The choropleth maps rely on exact country names matching Plotly’s recognized n
 
 ---
 ## What does it look like?
-The Debt comparison profiles will dynamically change if we change the inputs in this section (located at the very top part of the code). For simplicity, visit the Jupyter notebook file. As for example,
+The Debt comparison profiles will dynamically change if we change the inputs in this section *(located at the very top part of the code). For simplicity, visit the Jupyter notebook file.* As for example,
 
 ```python
 USER_COUNTRY = "Philippines"
@@ -442,16 +442,15 @@ The code allows the user to define two countries to highlight for comparison. Th
 <img width="964" height="266" alt="image" src="https://github.com/user-attachments/assets/11146d8a-5c9b-4ca3-8e5a-13313b783cf7" />
 
 ### National Debt by Country
-<img width="1138" height="600" alt="image" src="https://github.com/user-attachments/assets/f36548dd-f394-4416-a8b3-464b43673354" />
+<img width="1122" height="641" alt="image" src="https://github.com/user-attachments/assets/d8b6519d-9be1-42f3-8b05-776d5ae9e0b2" />
 <img width="1580" height="5320" alt="newplot" src="https://github.com/user-attachments/assets/3216ab58-8b18-4e84-979f-2f7298979cd8" />
 
-
 ### Debt as Percentage of GDP by Country
-<img width="1136" height="606" alt="image" src="https://github.com/user-attachments/assets/3a90d7bb-af8f-4a1a-9093-4272884840ff" />
+<img width="1151" height="652" alt="image" src="https://github.com/user-attachments/assets/1f00b45c-fae5-4440-8434-2f6f6f0929e9" />
 <img width="1580" height="5320" alt="newplot (1)" src="https://github.com/user-attachments/assets/f4f2b51d-4c56-445f-aa25-aa6c01630e0d" />
 
 ### Debt Per Capita by Country
-<img width="1136" height="629" alt="image" src="https://github.com/user-attachments/assets/4775a274-5a8f-4063-a38e-88ea9c75965d" />
+<img width="1112" height="668" alt="image" src="https://github.com/user-attachments/assets/4cf28770-497e-4eb1-ba55-02dbee0fb731" />
 <img width="1580" height="5320" alt="newplot (2)" src="https://github.com/user-attachments/assets/f3c90277-bbac-42b3-9227-b749f2f7f011" />
 
 
