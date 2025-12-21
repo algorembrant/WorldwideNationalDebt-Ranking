@@ -1,6 +1,8 @@
 # Countries with the Highest National Debt
 
-This project fetches the latest data on national debt from the *World Population Review* website and visualizes it using interactive Plotly bar charts. It shows the total debt, debt as a percentage of GDP, and debt per capita for each country.  It highlights user-selected countries for comparison, generates narrative analysis, and provides interactive bar charts, tables, and choropleth maps for a comprehensive understanding of debt profiles.
+This project fetches the latest data on national debt from the *World Population Review* website and visualizes it using interactive Plotly bar charts. It shows the total debt, debt as a percentage of GDP, and debt per capita for each country.  It highlights user-selected countries for comparison, generates narrative analysis, and provides interactive bar charts, tables, and choropleth maps for a comprehensive understanding of debt profiles. 
+
+*(as for suggestion, quickly scan this md file down until the very end. To fully grasp what this project is all about)*
 
 ---
 ## Required Libraries
@@ -420,3 +422,40 @@ fig_map_pc.show()
 ## Important Notes
 
 The choropleth maps rely on exact country names matching Plotly’s recognized names. Any discrepancies can result in missing countries or markers. The `hover_data` parameter ensures that all three debt metrics are visible when hovering over any country, providing a comprehensive overview. The `add_country_markers` function ensures that the selected countries are clearly labeled regardless of color scale or geographic location.
+
+---
+## What does it look like?
+The Debt comparison profiles will dynamically change if we change the inputs in this section (located at the very top part of the code). For simplicity, visit the Jupyter notebook file. As for example,
+
+```python
+USER_COUNTRY = "Philippines"
+USER_COLOR = "teal"
+HIGHLIGHT_COUNTRY = "Japan"
+HIGHLIGHT_COLOR = "orange"
+```
+The code allows the user to define two countries to highlight for comparison. The main country is stored in `USER_COUNTRY`, with its display color defined in `USER_COLOR`. The secondary country is stored in `HIGHLIGHT_COUNTRY` and is assigned `HIGHLIGHT_COLOR`. These inputs determine which countries will be emphasized in all charts, tables, and maps. It is critical that the country names exactly match the entries in the source website and the Plotly location database, including capitalization and spacing, because any mismatch can result in missing data or failed visualizations.
+
+### Country Debt Comparison Table
+<img width="1042" height="85" alt="image" src="https://github.com/user-attachments/assets/6b16d068-b7be-467c-afab-08a0f93e6f0d" />
+
+### The Narrative and Comparison Statements
+<img width="964" height="266" alt="image" src="https://github.com/user-attachments/assets/11146d8a-5c9b-4ca3-8e5a-13313b783cf7" />
+
+### National Debt by Country
+<img width="1138" height="600" alt="image" src="https://github.com/user-attachments/assets/f36548dd-f394-4416-a8b3-464b43673354" />
+<img width="1580" height="5320" alt="newplot" src="https://github.com/user-attachments/assets/3216ab58-8b18-4e84-979f-2f7298979cd8" />
+
+
+### Debt as Percentage of GDP by Country
+<img width="1136" height="606" alt="image" src="https://github.com/user-attachments/assets/3a90d7bb-af8f-4a1a-9093-4272884840ff" />
+<img width="1580" height="5320" alt="newplot (1)" src="https://github.com/user-attachments/assets/f4f2b51d-4c56-445f-aa25-aa6c01630e0d" />
+
+### Debt Per Capita by Country
+<img width="1136" height="629" alt="image" src="https://github.com/user-attachments/assets/4775a274-5a8f-4063-a38e-88ea9c75965d" />
+<img width="1580" height="5320" alt="newplot (2)" src="https://github.com/user-attachments/assets/f3c90277-bbac-42b3-9227-b749f2f7f011" />
+
+
+
+
+
+
