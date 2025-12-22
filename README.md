@@ -1,5 +1,7 @@
 # Countries with the Highest National Debt
 
+*[(view)](https://algorembrant.github.io/WorldwideNationalDebt-Ranking/?fbclid=IwY2xjawO18p9leHRuA2FlbQIxMQBzcnRjBmFwcF9pZAEwAAEe4yrKf7uFYjprtqyao1712oAn3a20ydYLc1_mtTCiJFdPzzPWmp6TzDDbCqY_aem_NBiObIzhafZPQb15M8HqUQ)*
+
 This project fetches the latest data on national debt from the *World Population Review* website and visualizes it using interactive plots. It shows the total debt, debt as a percentage of GDP, and debt per capita for each country.  It highlights `user-selected countries` for comparison, prints `comparative table`, generates `narrative analysis`, and provides `interactive bar charts`, and `choropleth maps` for a comprehensive understanding of debt profiles across all countries. 
 
 This project is not related to what I mainly do, but it can economically inform the user about the current state of the debt profile of his/her country in comparison to all countries.
